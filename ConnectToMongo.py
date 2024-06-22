@@ -11,11 +11,7 @@ try:
     collection = database['reclamacoes']
     print('Conectado com sucesso!')
 
-    collection.delete_many({})
-    print('Dados anteriores excluidos.')
-
     documents = []
-
     for title, status, descriptions in zip(all_retrived_titles, all_retrived_statuses, all_retrived_descriptions):
         document = {
             "title": title,
