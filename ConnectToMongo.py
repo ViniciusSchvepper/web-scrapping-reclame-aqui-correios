@@ -1,12 +1,12 @@
 from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
 from uri import uri as connectionAddress
-from WebScrapping import titles_list, complaints_statuses_list, complaints_descriptions_list
+from WebScrapping import Main
 
+all_retrived_titles, all_retrived_statuses, all_retrived_descriptions = Main()
 client = MongoClient(connectionAddress, server_api = ServerApi('1'))
 
 try:
-    # client.admin.command('ping')
     database = client['reclamacoes']
     collection = database['reclamacoes']
     print('Conectado com sucesso!')
@@ -15,7 +15,8 @@ try:
     print('Dados anteriores excluidos.')
 
     documents = []
-    for title, status, descriptions in zip(titles_list, complaints_statuses_list, complaints_descriptions_list):
+
+    for title, status, descriptions in zip(all_retrived_titles, all_retrived_statuses, all_retrived_descriptions):
         document = {
             "title": title,
             "status": status,
