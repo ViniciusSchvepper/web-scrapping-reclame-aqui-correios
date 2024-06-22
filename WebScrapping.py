@@ -156,11 +156,10 @@ def get_overlay_status() -> str:
     get_overlay_status = get_overlay.value_of_css_property('display')
     return get_overlay_status
 
-all_retrived_titles = []
-all_retrived_statuses = []
-all_retrived_descriptions = []
-
 def Main():
+    all_retrived_titles = []
+    all_retrived_statuses = []
+    all_retrived_descriptions = []
     while True:
         actual_url = driver.current_url
         time.sleep(3)
